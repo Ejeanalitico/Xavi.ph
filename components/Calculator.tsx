@@ -46,15 +46,15 @@ const Calculator: React.FC<CalculatorProps> = ({ basePackage, bookingState, onCh
   }, [bookingState, basePackage, currentTotal, onTotalChange]);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mt-6">
-      <h3 className="font-serif text-xl mb-4 text-gray-800">Personaliza tu Experiencia</h3>
+    <div className="bg-zinc-900 p-6 rounded-lg shadow-sm border border-zinc-800 mt-6">
+      <h3 className="font-serif text-xl mb-4 text-white">Personaliza tu Experiencia</h3>
       
       <div className="space-y-4">
         {/* Canvas */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Cuadro Canvas</label>
+          <label className="block text-sm font-medium text-gray-400 mb-1">Cuadro Canvas</label>
           <select 
-            className="w-full border-gray-300 rounded-md shadow-sm p-2 border bg-gray-50 focus:ring-gold focus:border-gold"
+            className="w-full border-zinc-700 rounded-md shadow-sm p-2 border bg-zinc-800 focus:ring-white focus:border-white text-white"
             value={bookingState.canvasSize}
             onChange={(e) => onChange('canvasSize', e.target.value)}
           >
@@ -67,9 +67,9 @@ const Calculator: React.FC<CalculatorProps> = ({ basePackage, bookingState, onCh
 
         {/* Photobook */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Photobook Premium</label>
+          <label className="block text-sm font-medium text-gray-400 mb-1">Photobook Premium</label>
           <select 
-            className="w-full border-gray-300 rounded-md shadow-sm p-2 border bg-gray-50 focus:ring-gold focus:border-gold"
+            className="w-full border-zinc-700 rounded-md shadow-sm p-2 border bg-zinc-800 focus:ring-white focus:border-white text-white"
             value={bookingState.photobookSize}
             onChange={(e) => onChange('photobookSize', e.target.value)}
           >
@@ -82,9 +82,9 @@ const Calculator: React.FC<CalculatorProps> = ({ basePackage, bookingState, onCh
 
         {/* Prints */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Fotos Físicas</label>
+          <label className="block text-sm font-medium text-gray-400 mb-1">Fotos Físicas</label>
           <select 
-            className="w-full border-gray-300 rounded-md shadow-sm p-2 border bg-gray-50 focus:ring-gold focus:border-gold"
+            className="w-full border-zinc-700 rounded-md shadow-sm p-2 border bg-zinc-800 focus:ring-white focus:border-white text-white"
             value={bookingState.printSet}
             onChange={(e) => onChange('printSet', e.target.value)}
           >
@@ -95,9 +95,9 @@ const Calculator: React.FC<CalculatorProps> = ({ basePackage, bookingState, onCh
           </select>
         </div>
 
-        <div className="pt-4 mt-4 border-t border-gray-200 flex justify-between items-center">
-            <span className="text-gray-500">Inversión Total:</span>
-            <span className="text-2xl font-serif font-bold text-gray-900">${currentTotal.toLocaleString('es-MX')}</span>
+        <div className="pt-4 mt-4 border-t border-zinc-800 flex justify-between items-center">
+            <span className="text-gray-400">Inversión Total:</span>
+            <span className="text-2xl font-serif font-bold text-white">${currentTotal.toLocaleString('es-MX')}</span>
         </div>
       </div>
     </div>

@@ -189,7 +189,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="pb-20">
+    <div className="pb-20 bg-black text-white">
       {/* Hero Section */}
       <section className="relative h-[80vh] flex items-center justify-center bg-zinc-900 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -198,7 +198,7 @@ const Home: React.FC = () => {
             alt="Hero Background" 
             className="w-full h-full object-cover opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-900"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black"></div>
         </div>
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center">
           {logo && <img src={logo} alt="Xavi.Ph Logo" className="h-20 mb-6 drop-shadow-lg" />}
@@ -213,22 +213,22 @@ const Home: React.FC = () => {
       </section>
 
       {/* Calendar Preview Section */}
-      <section className="py-12 bg-white border-b border-gray-100">
+      <section className="py-12 bg-black border-b border-zinc-800">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center space-x-2 mb-6">
             <CalendarIcon className="w-5 h-5 text-gray-400" />
-            <h3 className="text-lg font-serif">Fechas Reservadas</h3>
+            <h3 className="text-lg font-serif text-white">Fechas Reservadas</h3>
           </div>
           <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
              {acceptedBookings.length === 0 ? (
-                 <p className="text-gray-400 text-sm">Calendario disponible. ¡Aparta tu fecha hoy!</p>
+                 <p className="text-gray-500 text-sm">Calendario disponible. ¡Aparta tu fecha hoy!</p>
              ) : (
                  acceptedBookings.map(b => (
-                     <div key={b.id} className="min-w-[150px] p-3 bg-gray-50 border border-gray-100 rounded text-center">
+                     <div key={b.id} className="min-w-[150px] p-3 bg-zinc-900 border border-zinc-800 rounded text-center">
                          <p className="text-xs text-gray-500 uppercase">{b.packageName}</p>
-                         <p className="font-bold text-gray-800">{b.dates.primary}</p>
-                         {b.dates.secondary && <p className="text-xs text-gray-400">& {b.dates.secondary}</p>}
-                         <span className="inline-block mt-2 px-2 py-0.5 bg-gray-200 text-gray-600 text-[10px] rounded-full">Ocupada</span>
+                         <p className="font-bold text-gray-200">{b.dates.primary}</p>
+                         {b.dates.secondary && <p className="text-xs text-gray-500">& {b.dates.secondary}</p>}
+                         <span className="inline-block mt-2 px-2 py-0.5 bg-zinc-800 text-gray-400 text-[10px] rounded-full">Ocupada</span>
                      </div>
                  ))
              )}
@@ -237,14 +237,14 @@ const Home: React.FC = () => {
       </section>
 
       {/* Main Content Area */}
-      <section className="py-20 px-4 bg-gray-50" id="experiencias">
+      <section className="py-20 px-4 bg-black" id="experiencias">
         <div className="max-w-7xl mx-auto">
             
             {/* VIEW 1: CATEGORIES */}
             {viewState === 'categories' && (
                 <div className="animate-fade-in">
-                    <h2 className="text-3xl md:text-4xl font-serif text-center mb-4">Experiencias & Colecciones</h2>
-                    <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto">Selecciona el tipo de evento para ver nuestros paquetes exclusivos.</p>
+                    <h2 className="text-3xl md:text-4xl font-serif text-center mb-4 text-white">Experiencias & Colecciones</h2>
+                    <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Selecciona el tipo de evento para ver nuestros paquetes exclusivos.</p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {Object.entries(catCovers).map(([catName, imgUrl]) => {
@@ -253,14 +253,14 @@ const Home: React.FC = () => {
                                 <div 
                                     key={catName} 
                                     onClick={() => handleCategorySelect(catName)}
-                                    className="relative h-96 cursor-pointer group overflow-hidden rounded-sm shadow-lg"
+                                    className="relative h-96 cursor-pointer group overflow-hidden rounded-sm shadow-lg border border-zinc-800"
                                 >
                                     <img 
                                         src={imgUrl || 'https://picsum.photos/800/600'} 
                                         alt={catName} 
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-60" 
                                     />
-                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors flex flex-col items-center justify-center text-white">
+                                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors flex flex-col items-center justify-center text-white">
                                         <Icon className="w-10 h-10 mb-4 opacity-80" strokeWidth={1} />
                                         <h3 className="text-2xl font-serif tracking-widest uppercase">{catName}</h3>
                                         <span className="mt-4 text-xs tracking-widest border-b border-transparent group-hover:border-white transition-all pb-1">VER PAQUETES</span>
@@ -276,29 +276,29 @@ const Home: React.FC = () => {
             {viewState === 'list' && (
                 <div className="animate-fade-in">
                     <div className="flex items-center mb-8">
-                        <button onClick={handleBackToCategories} className="flex items-center text-sm text-gray-500 hover:text-black transition-colors">
+                        <button onClick={handleBackToCategories} className="flex items-center text-sm text-gray-400 hover:text-white transition-colors">
                             <ArrowLeft className="w-4 h-4 mr-2" /> Volver a Categorías
                         </button>
-                        <h2 className="text-2xl font-serif ml-auto uppercase tracking-wider">{activeCategory}</h2>
+                        <h2 className="text-2xl font-serif ml-auto uppercase tracking-wider text-white">{activeCategory}</h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredPackages.length > 0 ? (
                             filteredPackages.map((pkg) => (
-                                <div key={pkg.id} className="bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                                <div key={pkg.id} className="bg-zinc-900 border border-zinc-800 shadow-sm hover:border-gray-600 transition-all duration-300 flex flex-col">
                                     <div className="h-64 overflow-hidden relative">
-                                        <img src={pkg.coverImage} alt={pkg.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-                                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider">
+                                        <img src={pkg.coverImage} alt={pkg.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 opacity-90" />
+                                        <div className="absolute top-4 right-4 bg-black/80 backdrop-blur px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
                                             {pkg.category}
                                         </div>
                                     </div>
                                     <div className="p-8 flex flex-col flex-grow text-center">
-                                        <h3 className="text-xl font-serif mb-2">{pkg.name}</h3>
-                                        <p className="text-gray-500 text-sm mb-6 line-clamp-2">{pkg.description}</p>
+                                        <h3 className="text-xl font-serif mb-2 text-white">{pkg.name}</h3>
+                                        <p className="text-gray-400 text-sm mb-6 line-clamp-2">{pkg.description}</p>
                                         <div className="mt-auto">
                                             <button 
                                                 onClick={() => handlePackageSelect(pkg)}
-                                                className="w-full px-6 py-3 border border-black text-black text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-colors"
+                                                className="w-full px-6 py-3 border border-white text-white text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-colors"
                                             >
                                                 Ver Detalles
                                             </button>
@@ -309,7 +309,7 @@ const Home: React.FC = () => {
                         ) : (
                             <div className="col-span-full text-center py-20 text-gray-500">
                                 <p>No hay paquetes disponibles para esta categoría.</p>
-                                <button onClick={handleBackToCategories} className="mt-4 text-black underline">Volver</button>
+                                <button onClick={handleBackToCategories} className="mt-4 text-white underline">Volver</button>
                             </div>
                         )}
                     </div>
@@ -318,9 +318,9 @@ const Home: React.FC = () => {
 
             {/* VIEW 3: DETAILS & BOOKING */}
             {viewState === 'details' && selectedPackage && (
-                <div id="booking-form" className="animate-fade-in min-h-screen bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-                    <div className="p-4 bg-gray-50 border-b border-gray-100">
-                         <button onClick={handleBackToList} className="flex items-center text-sm text-gray-500 hover:text-black transition-colors">
+                <div id="booking-form" className="animate-fade-in min-h-screen bg-black rounded-lg shadow-sm border border-zinc-800 overflow-hidden">
+                    <div className="p-4 bg-zinc-900 border-b border-zinc-800">
+                         <button onClick={handleBackToList} className="flex items-center text-sm text-gray-400 hover:text-white transition-colors">
                             <ArrowLeft className="w-4 h-4 mr-2" /> Volver a {activeCategory}
                         </button>
                     </div>
@@ -331,15 +331,15 @@ const Home: React.FC = () => {
                         {/* Left Column: Package Details & Locations */}
                         <div className="md:col-span-7 space-y-12">
                             <div>
-                                <h3 className="text-4xl font-serif mb-2">{selectedPackage.name}</h3>
-                                <p className="text-2xl font-bold text-gray-900 mb-4">${selectedPackage.price.toLocaleString('es-MX')}</p>
-                                <p className="text-gray-500 mb-6 text-lg leading-relaxed">{selectedPackage.description}</p>
+                                <h3 className="text-4xl font-serif mb-2 text-white">{selectedPackage.name}</h3>
+                                <p className="text-2xl font-bold text-gray-200 mb-4">${selectedPackage.price.toLocaleString('es-MX')}</p>
+                                <p className="text-gray-400 mb-6 text-lg leading-relaxed">{selectedPackage.description}</p>
                                 
-                                <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
-                                    <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-gray-400">Este paquete incluye:</h4>
+                                <div className="bg-zinc-900 p-6 rounded-lg border border-zinc-800">
+                                    <h4 className="font-bold text-sm uppercase tracking-wide mb-4 text-gray-500">Este paquete incluye:</h4>
                                     <ul className="grid grid-cols-1 gap-3">
                                         {selectedPackage.includes.map((item, idx) => (
-                                            <li key={idx} className="flex items-start text-sm text-gray-700">
+                                            <li key={idx} className="flex items-start text-sm text-gray-300">
                                                 <Check className="w-4 h-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                                                 {item}
                                             </li>
@@ -355,8 +355,8 @@ const Home: React.FC = () => {
                                 onTotalChange={setTotalPrice}
                             />
 
-                            <div className="pt-8 border-t border-gray-100">
-                                <h4 className="text-2xl font-serif mb-6">Locaciones CDMX Sugeridas</h4>
+                            <div className="pt-8 border-t border-zinc-800">
+                                <h4 className="text-2xl font-serif mb-6 text-white">Locaciones CDMX Sugeridas</h4>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     {LOCATIONS.map((loc, idx) => (
                                         <a 
@@ -364,14 +364,14 @@ const Home: React.FC = () => {
                                             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.name + ' CDMX')}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="bg-zinc-800 p-4 rounded border border-zinc-700 hover:border-gray-500 hover:bg-zinc-700 transition-all cursor-pointer group block"
+                                            className="bg-zinc-900 p-4 rounded border border-zinc-800 hover:border-gray-600 hover:bg-zinc-800 transition-all cursor-pointer group block"
                                         >
                                             <div className="flex items-start mb-2 justify-between">
                                                 <div className="flex items-center">
-                                                    <MapPin className="w-4 h-4 text-gray-100 mr-2 mt-1 group-hover:text-white" />
+                                                    <MapPin className="w-4 h-4 text-gray-400 mr-2 mt-1 group-hover:text-white" />
                                                     <h5 className="font-serif text-white group-hover:underline">{loc.name}</h5>
                                                 </div>
-                                                <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-white" />
+                                                <ExternalLink className="w-3 h-3 text-gray-500 group-hover:text-white" />
                                             </div>
                                             <p className="text-xs text-gray-400 pl-6 group-hover:text-gray-300">{loc.description}</p>
                                         </a>
@@ -383,19 +383,19 @@ const Home: React.FC = () => {
 
                         {/* Right Column: Booking Form */}
                         <div className="md:col-span-5">
-                            <div className="bg-gray-50 p-8 rounded-xl border border-gray-100 sticky top-24 shadow-lg">
-                                <h3 className="text-xl font-serif mb-6 flex items-center">
+                            <div className="bg-zinc-900 p-8 rounded-xl border border-zinc-800 sticky top-24 shadow-lg">
+                                <h3 className="text-xl font-serif mb-6 flex items-center text-white">
                                     <CalendarIcon className="w-5 h-5 mr-2" />
                                     Reservar Fecha
                                 </h3>
                                 
                                 <form onSubmit={handleBookingSubmit} className="space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+                                        <label className="block text-sm font-medium text-gray-400 mb-1">Nombre Completo</label>
                                         <input 
                                             type="text" 
                                             required
-                                            className="w-full p-3 border border-gray-300 rounded-md focus:ring-1 focus:ring-gray-900 outline-none"
+                                            className="w-full p-3 bg-zinc-800 border border-zinc-700 rounded-md focus:ring-1 focus:ring-white outline-none text-white"
                                             placeholder="Ej. Ana & Carlos"
                                             value={booking.clientName}
                                             onChange={(e) => handleBookingChange('clientName', e.target.value)}
@@ -403,13 +403,13 @@ const Home: React.FC = () => {
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
+                                        <label className="block text-sm font-medium text-gray-400 mb-1">
                                             {selectedPackage.category === 'Boda' ? 'Fecha Boda Civil' : 'Fecha del Evento'}
                                         </label>
                                         <input 
                                             type="date" 
                                             required
-                                            className="w-full p-3 border border-gray-300 rounded-md outline-none"
+                                            className="w-full p-3 bg-zinc-800 border border-zinc-700 rounded-md focus:ring-1 focus:ring-white outline-none text-white appearance-none"
                                             value={booking.datePrimary}
                                             onChange={(e) => handleBookingChange('datePrimary', e.target.value)}
                                         />
@@ -417,11 +417,11 @@ const Home: React.FC = () => {
 
                                     {selectedPackage.category === 'Boda' && (
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Boda Religiosa</label>
+                                            <label className="block text-sm font-medium text-gray-400 mb-1">Fecha Boda Religiosa</label>
                                             <input 
                                                 type="date" 
                                                 required
-                                                className="w-full p-3 border border-gray-300 rounded-md outline-none"
+                                                className="w-full p-3 bg-zinc-800 border border-zinc-700 rounded-md focus:ring-1 focus:ring-white outline-none text-white appearance-none"
                                                 value={booking.dateSecondary}
                                                 onChange={(e) => handleBookingChange('dateSecondary', e.target.value)}
                                             />
@@ -431,12 +431,12 @@ const Home: React.FC = () => {
                                     <div className="pt-4">
                                         <button 
                                             type="submit"
-                                            className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-md font-bold text-lg flex items-center justify-center transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                                            className="w-full bg-white text-black hover:bg-gray-200 py-4 rounded-md font-bold text-lg flex items-center justify-center transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                                         >
                                             <Phone className="w-5 h-5 mr-2" />
                                             Apartar Fecha por WhatsApp
                                         </button>
-                                        <p className="text-center text-xs text-gray-400 mt-2">
+                                        <p className="text-center text-xs text-gray-500 mt-2">
                                             Al hacer clic, se guardará tu pre-reserva y abrirá WhatsApp.
                                         </p>
                                     </div>
@@ -451,9 +451,9 @@ const Home: React.FC = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-20 bg-gray-50 border-t border-gray-100 border-dashed">
+      <section className="py-20 bg-black border-t border-zinc-800 border-dashed">
          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-serif text-center mb-8">Galería de Trabajos</h2>
+            <h2 className="text-3xl font-serif text-center mb-8 text-white">Galería de Trabajos</h2>
 
             {/* Portfolio Categories */}
             <div className="flex justify-center flex-wrap gap-4 mb-12">
@@ -461,7 +461,7 @@ const Home: React.FC = () => {
                     <button 
                         key={cat}
                         onClick={() => setActivePortCategory(cat)}
-                        className={`px-4 py-1.5 rounded-full text-xs tracking-wider uppercase border transition-all duration-300 ${activePortCategory === cat ? 'bg-zinc-800 text-white border-zinc-800' : 'bg-white text-gray-500 border-gray-200 hover:border-gray-400'}`}
+                        className={`px-4 py-1.5 rounded-full text-xs tracking-wider uppercase border transition-all duration-300 ${activePortCategory === cat ? 'bg-white text-black border-white' : 'bg-black text-gray-400 border-zinc-800 hover:border-gray-500'}`}
                     >
                         {cat}
                     </button>
@@ -469,13 +469,13 @@ const Home: React.FC = () => {
             </div>
 
             {filteredPortfolio.length === 0 ? (
-                <p className="text-center text-gray-400">Aún no hay fotos en esta categoría.</p>
+                <p className="text-center text-gray-500">Aún no hay fotos en esta categoría.</p>
             ) : (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {filteredPortfolio.map((item) => (
-                        <div key={item.id} className="relative aspect-square overflow-hidden rounded group cursor-pointer">
-                            <img src={item.url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <div key={item.id} className="relative aspect-square overflow-hidden rounded group cursor-pointer border border-zinc-800">
+                            <img src={item.url} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                                 <div>
                                     <p className="text-white text-xs font-bold uppercase tracking-wider">{item.category}</p>
                                     {item.title && <p className="text-gray-300 text-[10px]">{item.title}</p>}

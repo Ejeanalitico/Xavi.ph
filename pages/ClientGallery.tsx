@@ -51,25 +51,25 @@ const ClientGallery: React.FC<{ clientEmail: string, onLogout: () => void }> = (
   };
 
   return (
-    <div className="min-h-screen bg-white">
-        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 px-6 py-4 flex justify-between items-center">
+    <div className="min-h-screen bg-black">
+        <header className="sticky top-0 z-50 bg-black/95 backdrop-blur border-b border-zinc-800 px-6 py-4 flex justify-between items-center">
             <div>
-                <h1 className="font-serif text-xl text-gray-900">Galería Privada</h1>
-                <p className="text-xs text-gray-500">Bienvenido/a</p>
+                <h1 className="font-serif text-xl text-white">Galería Privada</h1>
+                <p className="text-xs text-gray-400">Bienvenido/a</p>
             </div>
             <div className="flex items-center space-x-4">
-                <div className="text-sm mr-2 hidden sm:block">
+                <div className="text-sm mr-2 hidden sm:block text-gray-300">
                     {photos.filter(p => p.selected).length} Seleccionadas
                 </div>
                 {!submitted ? (
                     <button 
                         onClick={saveSelection}
-                        className="bg-gray-900 text-white px-4 py-2 rounded text-sm hover:bg-gray-800"
+                        className="bg-white text-black px-4 py-2 rounded text-sm hover:bg-gray-200 font-bold"
                     >
                         Confirmar Selección
                     </button>
                 ) : (
-                    <span className="text-green-600 flex items-center text-sm font-bold">
+                    <span className="text-green-500 flex items-center text-sm font-bold">
                         <Check className="w-4 h-4 mr-1" /> Enviado
                     </span>
                 )}
@@ -81,21 +81,21 @@ const ClientGallery: React.FC<{ clientEmail: string, onLogout: () => void }> = (
 
         <main className="p-4 max-w-7xl mx-auto">
             {submitted && (
-                <div className="mb-8 bg-green-50 border border-green-200 p-4 rounded-lg text-center text-green-800">
+                <div className="mb-8 bg-green-900/20 border border-green-800 p-4 rounded-lg text-center text-green-400">
                     ¡Gracias! Tu selección ha sido enviada. El administrador (Xavi) ha recibido tu lista de favoritos para edición.
                 </div>
             )}
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {photos.map((photo) => (
-                    <div key={photo.id} className="relative group aspect-[3/4] overflow-hidden bg-gray-100 rounded-sm">
+                    <div key={photo.id} className="relative group aspect-[3/4] overflow-hidden bg-zinc-900 rounded-sm border border-zinc-800">
                         <img 
                             src={photo.url} 
                             alt="Gallery item" 
                             className={`w-full h-full object-cover transition-all duration-500 ${photo.selected ? 'scale-95' : 'group-hover:scale-105'}`}
                         />
                         {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                         
                         {/* Dense Repeated Watermark Pattern */}
                         <div className="absolute inset-0 opacity-20 pointer-events-none select-none overflow-hidden grid grid-cols-3 grid-rows-6 gap-4 p-2 transform -rotate-12">
@@ -110,7 +110,7 @@ const ClientGallery: React.FC<{ clientEmail: string, onLogout: () => void }> = (
                             className="absolute bottom-4 right-4 z-10 p-2 rounded-full transition-all transform hover:scale-110 focus:outline-none"
                         >
                             <Heart 
-                                className={`w-8 h-8 drop-shadow-md ${photo.selected ? 'fill-red-500 text-red-500' : 'text-white fill-transparent hover:fill-white/50'}`} 
+                                className={`w-8 h-8 drop-shadow-md ${photo.selected ? 'fill-red-600 text-red-600' : 'text-white fill-transparent hover:fill-white/50'}`} 
                                 strokeWidth={1.5}
                             />
                         </button>
